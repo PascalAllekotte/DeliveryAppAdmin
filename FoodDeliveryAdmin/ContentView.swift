@@ -9,16 +9,35 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        TabView {
+            HomeView()
+                .tabItem {
+                    Image(systemName: "network")
+                    Text("Home")
+                        .foregroundStyle(.red)
+                }
+            
+            
+            DatabaseView()
+                .tabItem {
+                    Image(systemName: "book.pages")
+                    Text("Database")
+                }
+            
+            AnalyticView()
+                .tabItem {
+                    Image(systemName: "bonjour")
+                    Text("Analytics")
+                }
         }
-        .padding()
+        .tint(Color("MagicBlue"))
+        .frame(maxWidth: .infinity)
+        .background(.blue)
     }
 }
 
 #Preview {
     ContentView()
+        .environmentObject(AuthViewModel())
 }
+//book.pages
