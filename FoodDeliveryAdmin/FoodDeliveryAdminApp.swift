@@ -21,7 +21,6 @@ struct FoodDeliveryAdminApp: App {
            FirebaseConfiguration.shared.setLoggerLevel(.min)
            FirebaseApp.configure()
            
-           // Verwende die Farbe "MagicBlue" aus den Assets
            if let magicBlue = UIColor(named: "MagicBlue") {
                let appearance = UITabBarAppearance()
                appearance.configureWithDefaultBackground()

@@ -15,7 +15,7 @@ struct ProductMeatModel : Codable, Identifiable {
     
     var description : String
     var imageURL : String
-    var price : String // double besser
+    var price : String 
     var productName: String
     var vauswahl1 : String
     var vauswahl2 : String

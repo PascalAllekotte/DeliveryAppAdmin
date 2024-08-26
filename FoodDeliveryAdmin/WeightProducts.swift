@@ -40,7 +40,7 @@ struct WeightProducts: View {
                             .fontWeight(.bold)
                             .padding(6)
                             .padding(.top, -20)
-                            .foregroundStyle(.black) // Schriftfarbe Schwarz
+                            .foregroundStyle(.black)
                         Spacer()
                     }
                     
@@ -48,13 +48,11 @@ struct WeightProducts: View {
                     VStack(alignment: .leading, spacing: 5) {
                         Text("Produktname")
                             .font(.headline)
-                            .foregroundStyle(.black) // Schriftfarbe Schwarz
                         TextField("Produktname eingeben", text: $newProduct.productName)
                             .textFieldStyle()
 
                         Text("Beschreibung")
                             .font(.headline)
-                            .foregroundStyle(.black) // Schriftfarbe Schwarz
                         TextField("Beschreibung eingeben", text: $newProduct.description)
                             .textFieldStyle()
                     }
@@ -65,7 +63,6 @@ struct WeightProducts: View {
                         VStack(alignment: .leading, spacing: 5) {
                             Text("Preis")
                                 .font(.headline)
-                                .foregroundStyle(.black) // Schriftfarbe Schwarz
                             TextField("Preis eingeben", text: $newProduct.price)
                                 .textFieldStyle()
                         }
@@ -73,7 +70,7 @@ struct WeightProducts: View {
                         VStack(alignment: .leading, spacing: 5) {
                             Text("Kategorie")
                                 .font(.headline)
-                                .foregroundStyle(.black) // Schriftfarbe Schwarz
+                               
 
                             Picker("Kategorie auswählen", selection: Binding(
                                 get: { newProduct.category ?? categories.first! },
@@ -81,14 +78,14 @@ struct WeightProducts: View {
                             )) {
                                 ForEach(categories, id: \.self) { category in
                                     Text(category).tag(category as String?)
-                                        .foregroundStyle(.black) // Schriftfarbe Schwarz
+                                        .foregroundStyle(.black)
                                 }
                             }
                             .pickerStyle(MenuPickerStyle())
-                            .frame(height: 50) // Höhe weiter vergrößert
-                            .foregroundStyle(.black) // Schriftfarbe Schwarz
+                            .frame(height: 50)
+                         
                             .padding(.horizontal, 10)
-                            .background(Color.gray.opacity(0.2)) // Hintergrundfarbe anpassen, falls erforderlich
+                            .background(Color.gray.opacity(0.2))
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                             .overlay(
                                 RoundedRectangle(cornerRadius: 10)
@@ -102,8 +99,7 @@ struct WeightProducts: View {
                     VStack(alignment: .leading, spacing: 7) {
                         Text("Optionen")
                             .font(.headline)
-                            .foregroundStyle(.black) // Schriftfarbe Schwarz
-                        
+                            
                         TextField("Auswahl 1", text: $newProduct.vauswahl1)
                             .textFieldStyle()
 
@@ -112,11 +108,11 @@ struct WeightProducts: View {
                         
                         Toggle("Rabatt", isOn: $newProduct.discount)
                             .padding(.horizontal, 10)
-                            .frame(height: 50) // Höhe weiter vergrößert
+                            .frame(height: 50)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                             .overlay(
                                 RoundedRectangle(cornerRadius: 10)
-                                    .stroke(Color("MagicBlue"), lineWidth: 0.5) // Line width 1
+                                    .stroke(Color("MagicBlue"), lineWidth: 0.5)
                             )
                         
                         if newProduct.discount {
@@ -126,11 +122,11 @@ struct WeightProducts: View {
                         
                         Toggle("Favorit", isOn: $newProduct.isFavorite)
                             .padding(.horizontal, 10)
-                            .frame(height: 50) // Höhe weiter vergrößert
+                            .frame(height: 50)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                             .overlay(
                                 RoundedRectangle(cornerRadius: 10)
-                                    .stroke(Color("MagicBlue"), lineWidth: 0.5) // Line width 1
+                                    .stroke(Color("MagicBlue"), lineWidth: 0.5)
                             )
                     }
                     .padding(.horizontal)
@@ -139,12 +135,12 @@ struct WeightProducts: View {
                     VStack(alignment: .leading, spacing: 5) {
                         Text("Tags")
                             .font(.headline)
-                            .foregroundStyle(.black) // Schriftfarbe Schwarz
+                            
                         
                         HStack {
                             TextField("Neuer Tag", text: $newTag)
                                 .textFieldStyle()
-                                .frame(height: 45) // Höhe weiter vergrößert
+                                .frame(height: 45)
 
                             Button(action: {
                                 if !newTag.isEmpty {
@@ -154,7 +150,7 @@ struct WeightProducts: View {
                             }) {
                                 Text("Hinzufügen")
                                     .padding(.horizontal, 10)
-                                    .padding(.vertical, 10) // Höhe des Buttons weiter vergrößert
+                                    .padding(.vertical, 10)
                                     .bold()
                                     .background(Color("MagicBlue"))
                                     .foregroundStyle(.white)
@@ -171,7 +167,6 @@ struct WeightProducts: View {
                                 ForEach(hTags, id: \.self) { tag in
                                     HStack {
                                         Text(tag)
-                                            .foregroundStyle(.black) // Schriftfarbe Schwarz
                                         Spacer()
                                         Button(action: {
                                             if let index = newProduct.hTags?.firstIndex(of: tag) {
@@ -202,7 +197,7 @@ struct WeightProducts: View {
                         Text("Produkt hinzufügen")
                             .fontWeight(.bold)
                             .frame(maxWidth: .infinity)
-                            .padding(.vertical, 15) // Höhe weiter vergrößert
+                            .padding(.vertical, 15) 
                             .background(Color("MagicBlue"))
                             .foregroundStyle(.white)
                             .clipShape(RoundedRectangle(cornerRadius: 15))
