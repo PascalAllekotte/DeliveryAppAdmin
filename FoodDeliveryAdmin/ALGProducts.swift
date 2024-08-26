@@ -11,11 +11,11 @@ struct ALGProducts: View {
     
     // MARK: Variables -
     
-    @State var productViewModel = ProductViewModel()
+    @StateObject var productViewModel = ProductViewModel()
     
     @State private var newProduct = ProductModel(
         id: UUID().uuidString,
-        imageURL: "",
+        imageURL: "https://storage.googleapis.com/appshop-691f3.appspot.com/MeatNow.png",
         ml: "",
         price: "",
         productName: "",
@@ -29,7 +29,7 @@ struct ALGProducts: View {
         isFavorite: false
     )
     
-    let categories = ["Lamm", "Rind", "drinks", "Getraenke", "Gewürze"]
+    let categories = ["Lamm", "Rind", "drinks", "Alkoholfrei", "Gewürze", "Geflügel", "Grillen", "Alkoholisch"]
     @State private var newTag = ""
     
     
@@ -43,27 +43,27 @@ struct ALGProducts: View {
                 VStack{
                     
                     HStack{
-                        Text("Add new Product")
+                        Text("Neues Produkt hinzufügen")
                             .font(.title)
                             .fontWeight(.bold)
                             .padding(6)
-                            .padding(.top, -20)
-                            .foregroundStyle(.black)
+                            .padding(.top, -10)
+                            
                         Spacer()
                     }
                     
                     VStack(alignment: .leading, spacing: 5) {
                         Text("Produktname")
                             .font(.headline)
-                        TextField("ProductName", text: $newProduct.productName)
+                        TextField("Produkt Name", text: $newProduct.productName)
                             .textFieldStyle()
                     }
                     .padding(.horizontal)
                     
                     VStack(alignment: .leading, spacing: 5) {
-                        Text("Description")
+                        Text("Beschreibung")
                             .font(.headline)
-                        TextField("Product Description", text: $newProduct.description)
+                        TextField("Beschreibung eingeben", text: $newProduct.description)
                             .textFieldStyle()
                     }
                     .padding(.horizontal)
@@ -72,18 +72,18 @@ struct ALGProducts: View {
                     
                     HStack(spacing: 10){
                         VStack(alignment: .leading, spacing: 5){
-                            Text("Price")
+                            Text("Preis")
                                 .font(.headline)
-                            TextField("Insert Price", text: $newProduct.price)
+                            TextField("Preis eingeben", text: $newProduct.price)
                                 .textFieldStyle()
                         }
                         
                         
                         VStack(alignment: .leading, spacing: 5){
-                            Text("Category")
+                            Text("Kategorie")
                                 .font(.headline)
                             
-                            Picker("Choose Category", selection: Binding(
+                            Picker("Kategorie", selection: Binding(
                                 get: { newProduct.category ?? categories.first! },
                                 set: { newProduct.category = $0 }
                             )) {
@@ -107,9 +107,11 @@ struct ALGProducts: View {
                     
                     // ------------------- OPTIONS -------------------
                     VStack(alignment: .leading, spacing: 5) {
-                        Text("Options")
+                        Text("Optionen")
                             .font(.headline)
-                        TextField("Quantity / Description", text: $newProduct.quantity)
+                        TextField("Anzahl + k. Beschreibung", text: $newProduct.quantity)
+                            .textFieldStyle()
+                        TextField("ml", text: $newProduct.ml)
                             .textFieldStyle()
                         
                         Toggle("Favorite", isOn: $newProduct.isFavorite)
@@ -120,7 +122,7 @@ struct ALGProducts: View {
                                 RoundedRectangle(cornerRadius: 10)
                                     .stroke(Color("MagicBlue"), lineWidth: 0.5)
                             )
-                        Toggle("Discount", isOn: $newProduct.discount)
+                        Toggle("Rabatt", isOn: $newProduct.discount)
                             .padding(.horizontal, 10)
                             .frame(height: 50)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
@@ -129,7 +131,7 @@ struct ALGProducts: View {
                                     .stroke(Color("MagicBlue"), lineWidth: 0.5)
                             )
                         if newProduct.discount {
-                            TextField("Discount Details", text: $newProduct.discountDetail)
+                            TextField("Rabatt Details", text: $newProduct.discountDetail)
                                 .textFieldStyle()
                         }
                         
@@ -139,7 +141,7 @@ struct ALGProducts: View {
                             Text("Tags")
                                 .font(.headline)
                             HStack{
-                                TextField("New Tag", text: $newTag)
+                                TextField("Neuer Tag", text: $newTag)
                                     .textFieldStyle()
                                     .frame(height: 45)
                                 
@@ -149,7 +151,7 @@ struct ALGProducts: View {
                                         newTag = ""
                                     }
                                 }) {
-                                    Text("Add")
+                                    Text("hinzufügen")
                                         .padding(.horizontal, 10)
                                         .padding(.vertical, 10)
                                         .bold()
@@ -183,23 +185,26 @@ struct ALGProducts: View {
                                 .clipShape(RoundedRectangle(cornerRadius: 10))
                             }
                             
+                            // Produkt hinzufügen Button
                             Button(action: {
-                                
-                                
-                                
+                                if let category = newProduct.category, !category.isEmpty {
+                                    productViewModel.addNormalProduct(newProduct)
+                                } else {
+                                    print("Kategorie ist nicht ausgewählt oder leer")
+                                }
                             }) {
-                                Text("Add product")
+                                Text("Produkt hinzufügen")
                                     .fontWeight(.bold)
                                     .frame(maxWidth: .infinity)
-                                    .padding(.horizontal, 10)
-                                    .padding(.vertical, 10)
-                                    .bold()
+                                    .padding(.vertical, 15)
                                     .background(Color("MagicBlue"))
                                     .foregroundStyle(.white)
-                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                                    .clipShape(RoundedRectangle(cornerRadius: 15))
+                                    .padding(.horizontal)
                                     .shadow(radius: 1)
-                                
+
                             }
+                            
                             
                             
                             

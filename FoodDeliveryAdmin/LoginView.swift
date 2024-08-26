@@ -21,6 +21,11 @@ struct LoginView: View {
     
     var body: some View {
         VStack{
+            
+            Image("MeatNow")
+                .resizable()
+                .scaledToFit()
+                .offset(CGSize(width: 0.0, height: 70.0))
             HStack{
                 Text("Login now!")
                     .font(.headline)

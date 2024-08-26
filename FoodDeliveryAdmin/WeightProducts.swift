@@ -13,7 +13,7 @@ struct WeightProducts: View {
     @State private var newProduct = ProductMeatModel(
         id: UUID().uuidString,
         description: "",
-        imageURL: "",
+        imageURL: "https://storage.googleapis.com/appshop-691f3.appspot.com/MeatNow.png",
         price: "",
         productName: "",
         vauswahl1: "",
@@ -27,7 +27,7 @@ struct WeightProducts: View {
     
     @State private var newTag: String = ""
     
-    let categories = ["Alkoholfrei", "Getraenke", "Lamm", "PascalTestet", "Rind", "drinks", "products", "users"]
+    let categories = ["Lamm", "Rind", "drinks", "Alkoholfrei", "Gewürze", "Geflügel", "Grillen", "Alkoholisch"]
     
     var body: some View {
         NavigationStack {

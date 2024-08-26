@@ -116,9 +116,7 @@
 		BA533B712C7A5497006D849E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				BA533B7A2C7A57D6006D849E /* AnalytricView */,
-				BA533B782C7A54E3006D849E /* HomeView */,
-				BA533B772C7A54D4006D849E /* DataBaseView */,
+				BAB6E5E52C7D306800B39E5D /* TabBar */,
 				BAB8B4EB2C7A202700094339 /* LoginView */,
 			);
 			name = Views;
@@ -166,6 +164,23 @@
 			);
 			name = Models;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		BAB6E5E42C7D305400B39E5D /* DetailViews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = DetailViews;
+			sourceTree = "<group>";
+		};
+		BAB6E5E52C7D306800B39E5D /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				BA533B782C7A54E3006D849E /* HomeView */,
+				BA533B772C7A54D4006D849E /* DataBaseView */,
+				BA533B7A2C7A57D6006D849E /* AnalytricView */,
+			);
+			name = TabBar;
 			sourceTree = "<group>";
 		};
 		BAB8B4B42C7A1EBC00094339 = {
@@ -232,6 +247,7 @@
 		BAB8B4EB2C7A202700094339 /* LoginView */ = {
 			isa = PBXGroup;
 			children = (
+				BAB6E5E42C7D305400B39E5D /* DetailViews */,
 				BAB8B4EC2C7A203D00094339 /* LoginView.swift */,
 				BAB8B4EE2C7A238E00094339 /* AuthViewModel.swift */,
 				BAB8B5022C7A2C0200094339 /* FireUser.swift */,
